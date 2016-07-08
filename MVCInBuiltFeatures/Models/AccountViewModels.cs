@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace MVCInBuiltFeatures.Models
 {
@@ -59,5 +60,16 @@ namespace MVCInBuiltFeatures.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+        [Required]
+        [Display(Name = "Contact No")]
+        public string ContactNo { get; set; }
+        [Required]
+        [Display(Name = "DoB")]
+        public DateTime DoB { get; set; }
+        
     }
 }

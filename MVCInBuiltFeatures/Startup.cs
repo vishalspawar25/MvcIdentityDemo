@@ -4,12 +4,16 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using MVCInBuiltFeatures.Models;
 using Owin;
+using System;
+using System.Globalization;
 
 [assembly: OwinStartupAttribute(typeof(MVCInBuiltFeatures.Startup))]
 namespace MVCInBuiltFeatures
 {
     public partial class Startup
     {
+       
+
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
@@ -37,7 +41,9 @@ namespace MVCInBuiltFeatures
 
                 var user = new ApplicationUser();
                 user.UserName = "VishalPawar";
-              
+                user.Email = "vishal.pawar@domain.com";
+                user.DoB = DateTime.ParseExact("25/05/1990", "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                user.ContactNo = "+91999999999";
                 string userPWD = "Admin@1234";
 
                 var chkUser = UserManager.Create(user, userPWD);
@@ -49,24 +55,7 @@ namespace MVCInBuiltFeatures
 
                 }
             }
-
-            //// creating Creating Manager role     
-            //if (!roleManager.RoleExists("Manager"))
-            //{
-            //    var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-            //    role.Name = "Manager";
-            //    roleManager.Create(role);
-
-            //}
-
-            //// creating Creating Employee role     
-            //if (!roleManager.RoleExists("Employee"))
-            //{
-            //    var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-            //    role.Name = "Employee";
-            //    roleManager.Create(role);
-
-            //}
+            
         }
     }
 }
